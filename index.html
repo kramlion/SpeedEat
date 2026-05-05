@@ -166,10 +166,11 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            border: none;
+            background-color: transparent;
         }
 
         .auth-btn.login {
-            background-color: transparent;
             color: var(--text-color);
             border: 1px solid #ddd;
         }
@@ -181,7 +182,6 @@
         .auth-btn.register {
             background-color: var(--primary-color);
             color: var(--white);
-            border: none;
         }
 
         .auth-btn.register:hover {
@@ -441,7 +441,7 @@
 
         .product-card-info {
             padding: 20px;
-            height: 260px; 
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
@@ -456,11 +456,7 @@
             color: var(--text-light);
             margin-bottom: 15px;
             font-size: 14px;
-            flex-grow: 1; 
-            overflow: hidden; 
-            display: -webkit-box;
-            -webkit-line-clamp: 3; 
-            -webkit-box-orient: vertical;
+            flex-grow: 1;
         }
 
         .product-meta {
@@ -879,59 +875,62 @@
         }
 
         /* Features */
-        /* Блок преимуществ */
-.features {
-    padding: 60px 5%;
-    text-align: center;
-    background-color: var(--light-color);
-}
+        .features {
+            padding: 60px 5%;
+            text-align: center;
+            background-color: var(--light-color);
+        }
 
-.features h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
-    color: var(--dark-color);
-}
+        .features h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: var(--dark-color);
+        }
 
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Фиксируем 5 колонок */
-    gap: 30px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-.feature-card {
-    background-color: var(--white);
-    padding: 30px 20px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    height: 320px; /* Фиксированная высота для всех карточек */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Выравниваем содержимое по центру */
-    align-items: center; /* Выравниваем по центру по горизонтали */
-    text-align: center;
-}
+        .feature-card {
+            background-color: var(--white);
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-.feature-icon {
-    font-size: 40px;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
 
-.feature-card h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: var(--dark-color);
-}
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
 
-.feature-card p {
-    color: var(--text-light);
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0;
-}
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+        }
 
         /* Testimonials */
         .testimonials {
@@ -1121,124 +1120,6 @@
             100% { transform: translateX(100%); opacity: 0; }
         }
 
-        /* Модальное окно регистрации/входа */
-        .auth-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 3000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .auth-modal.show {
-            display: flex;
-        }
-
-        .auth-modal-content {
-            background-color: var(--white);
-            border-radius: 15px;
-            width: 90%;
-            max-width: 500px;
-            padding: 30px;
-            position: relative;
-        }
-
-        .auth-tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .auth-tab {
-            flex: 1;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .auth-tab.active {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .auth-form {
-            display: none;
-        }
-
-        .auth-form.active {
-            display: block;
-        }
-
-        .auth-form h2 {
-            margin-bottom: 20px;
-            color: var(--dark-color);
-        }
-
-        .auth-form .form-group {
-            margin-bottom: 15px;
-        }
-
-        .auth-form .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-            color: var(--text-color);
-        }
-
-        .auth-form .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: var(--transition);
-        }
-
-        .auth-form .form-group input:focus {
-            border-color: var(--primary-color);
-            outline: none;
-        }
-
-        .auth-submit {
-            width: 100%;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 10px;
-        }
-
-        .auth-submit:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .close-auth-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: var(--text-light);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .close-auth-modal:hover {
-            color: var(--dark-color);
-        }
-
         /* Responsive */
         @media (max-width: 992px) {
             .hero h1 {
@@ -1258,7 +1139,7 @@
             }
 
             .features-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -1315,13 +1196,8 @@
                 border-radius: 8px;
             }
 
-            .auth-modal-content {
-                width: 95%;
-                margin: 20px;
-            }
-
             .features-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -1349,12 +1225,8 @@
                 <div class="search-results" id="search-results"></div>
             </div>
             <div class="auth-buttons" id="auth-buttons">
-                <a href="#" class="auth-btn login" id="login-btn">
-                    <i class="fas fa-sign-in-alt"></i> Войти
-                </a>
-                <a href="#" class="auth-btn register" id="register-btn">
-                    Регистрация
-                </a>
+                <button class="auth-btn login" id="login-btn">Войти</button>
+                <button class="auth-btn register" id="register-btn">Регистрация</button>
             </div>
             <div class="user-menu" id="user-menu" style="display: none;">
                 <div class="user-avatar" id="user-avatar">A</div>
@@ -1461,7 +1333,7 @@
     <!-- Products -->
     <section class="products" id="products">
         <div class="products-grid" id="products-grid">
-            <!-- Товары будут отображаться здесь -->
+            <!-- Товары будут загружаться из Supabase -->
         </div>
     </section>
 
@@ -1481,7 +1353,7 @@
                     <i class="fas fa-shipping-fast"></i>
                 </div>
                 <h3>Быстрая доставка</h3>
-                <p>Доставляем заказы по Ростову-на-Дону и области в течение 1-2 дней. В dungeon — 3-5 дней.</p>
+                <p>Доставляем заказы по Москве и области в течение 1-2 дней. По России — 3-5 дней.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
@@ -1517,7 +1389,7 @@
                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" alt="Алексей" class="author-avatar">
                     <div class="author-info">
                         <h4>Алексей</h4>
-                        <p>Рабовладелец</p>
+                        <p>Фитнес-инструктор</p>
                     </div>
                 </div>
             </div>
@@ -1526,8 +1398,8 @@
                 <div class="testimonial-author">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" alt="Мария" class="author-avatar">
                     <div class="author-info">
-                        <h4>Джон</h4>
-                        <p>Раб</p>
+                        <h4>Мария</h4>
+                        <p>Домохозяйка</p>
                     </div>
                 </div>
             </div>
@@ -1537,7 +1409,7 @@
                     <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Иван" class="author-avatar">
                     <div class="author-info">
                         <h4>Иван</h4>
-                        <p>Золо</p>
+                        <p>Спортсмен-любитель</p>
                     </div>
                 </div>
             </div>
@@ -1616,45 +1488,6 @@
         </div>
     </div>
 
-    <!-- Модальное окно регистрации/входа -->
-    <div class="auth-modal" id="auth-modal">
-        <div class="auth-modal-content">
-            <button class="close-auth-modal" id="close-auth-modal">&times;</button>
-            <div class="auth-tabs">
-                <div class="auth-tab active" id="login-tab">Вход</div>
-                <div class="auth-tab" id="register-tab">Регистрация</div>
-            </div>
-            <form class="auth-form active" id="login-form">
-                <h2>Вход</h2>
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Пароль</label>
-                    <input type="password" id="login-password" required>
-                </div>
-                <button type="submit" class="auth-submit" id="login-submit">Войти</button>
-            </form>
-            <form class="auth-form" id="register-form">
-                <h2>Регистрация</h2>
-                <div class="form-group">
-                    <label for="register-name">Имя</label>
-                    <input type="text" id="register-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-email">Email</label>
-                    <input type="email" id="register-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-password">Пароль</label>
-                    <input type="password" id="register-password" required>
-                </div>
-                <button type="submit" class="auth-submit" id="register-submit">Зарегистрироваться</button>
-            </form>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer id="contacts">
         <div class="footer-content">
@@ -1704,123 +1537,19 @@
         </div>
     </footer>
 
+    <!-- Supabase SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
-        // Данные товаров
-        let products = [
-            // Гантели
-            {
-                id: 1,
-                name: "Гантели 10 кг (пара)",
-                description: "Чугунные гантели с резиновым покрытием. Идеальны для домашних тренировок.",
-                price: 2500,
-                category: "dumbbells",
-                image: "https://avatars.mds.yandex.net/i?id=561aeb00fdcf6c772e73c56a0ad80f4a0c46d25f-12607459-images-thumbs&n=13",
-                stock: true
-            },
-            {
-                id: 2,
-                name: "Гантели 20 кг (пара)",
-                description: "Профессиональные гантели с антикоррозийным покрытием. Подходят для интенсивных тренировок.",
-                price: 4500,
-                category: "dumbbells",
-                image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                stock: true
-            },
-            // Штанги
-            {
-                id: 3,
-                name: "Штанга 20 кг",
-                description: "Олимпийская штанга с набором блинов.",
-                price: 8000,
-                category: "barbells",
-                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                stock: true
-            },
-            {
-                id: 4,
-                name: "Штанга 30 кг",
-                description: "Профессиональная штанга с блинами из чугуна. Для опытных спортсменов.",
-                price: 12000,
-                category: "barbells",
-                image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                stock: false
-            },
-            // Беговые дорожки
-            {
-                id: 5,
-                name: "Беговая дорожка",
-                description: "Электрическая беговая дорожка с регулировкой скорости и наклона.",
-                price: 25000,
-                category: "treadmills",
-                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                stock: true
-            },
-            {
-                id: 6,
-                name: "Беговая дорожка Premium",
-                description: "Профессиональная беговая дорожка с сенсорным экраном и программами тренировок.",
-                price: 45000,
-                category: "treadmills",
-                image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                stock: true
-            },
-            // Велотренажёры
-            {
-                id: 7,
-                name: "Велотренажёр",
-                description: "Магнитный велотренажёр с регулируемой нагрузкой.",
-                price: 18000,
-                category: "bikes",
-                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                stock: true
-            },
-            {
-                id: 8,
-                name: "Велотренажёр горизонтальный",
-                description: "Удобный горизонтальный велотренажёр для людей с проблемами спины.",
-                price: 22000,
-                category: "bikes",
-                image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                stock: true
-            },
-            // Аксессуары
-            {
-                id: 9,
-                name: "Фитнес-коврик",
-                description: "Коврик для йоги и фитнеса. Размер: 180x60 см. Материал: экологический каучук.",
-                price: 1200,
-                category: "accessories",
-                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                stock: true
-            },
-            {
-                id: 10,
-                name: "Гиря 16 кг",
-                description: "Чугунная гиря для функциональных тренировок.",
-                price: 1800,
-                category: "accessories",
-                image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                stock: true
-            }
-        ];
-
-        // Данные пользователей (в реальном проекте это будет на сервере)
-        let users = [
-            {
-                id: 1,
-                name: "Admin",
-                email: "admin@sportmaster.ru",
-                password: "admin123", // В реальном проекте пароли хранятся в зашифрованном виде!
-                role: "admin",
-                points: 0
-            }
-        ];
-
-        // Текущий пользователь
-        let currentUser = null;
+        // Инициализация Supabase
+        const supabaseUrl = 'https://achwrjesrnptzkpzqpzv.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFjaHdyamVzcm5wdHprcHpxcXoiLCJpYXQiOjE3MTk1MDQyMDAsImV4cCI6MjAyNTA5NDIwMH0.sb_secret_rPdYFfL0QQywoeJA9KKCIg_s22RQO5R';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
         // Корзина
         let cart = [];
+
+        // Текущий пользователь
+        let currentUser = null;
 
         // DOM elements
         const cartButton = document.getElementById('cart-button');
@@ -1839,22 +1568,13 @@
         const testimonials = document.querySelectorAll('.testimonial');
 
         // Auth elements
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
         const authButtons = document.getElementById('auth-buttons');
         const userMenu = document.getElementById('user-menu');
         const userAvatar = document.getElementById('user-avatar');
         const userName = document.getElementById('user-name');
         const userDropdown = document.getElementById('user-dropdown');
-        const loginBtn = document.getElementById('login-btn');
-        const registerBtn = document.getElementById('register-btn');
-        const authModal = document.getElementById('auth-modal');
-        const closeAuthModal = document.getElementById('close-auth-modal');
-        const loginTab = document.getElementById('login-tab');
-        const registerTab = document.getElementById('register-tab');
-        const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
-        const loginSubmit = document.getElementById('login-submit');
-        const registerSubmit = document.getElementById('register-submit');
-        const profileBtn = document.getElementById('profile-btn');
         const adminPanelBtn = document.getElementById('admin-panel-btn');
         const logoutBtn = document.getElementById('logout-btn');
 
@@ -1872,10 +1592,26 @@
         const usePointsCheckbox = document.getElementById('use-points-checkbox');
 
         // Отображение товаров
-        function renderProducts(productsToRender) {
+        async function renderProducts(productsToRender = null) {
+            let products;
+            if (productsToRender) {
+                products = productsToRender;
+            } else {
+                const { data, error } = await supabase
+                    .from('products')
+                    .select('*');
+
+                if (error) {
+                    console.error('Error fetching products:', error);
+                    products = [];
+                } else {
+                    products = data;
+                }
+            }
+
             productsGrid.innerHTML = '';
 
-            if (productsToRender.length === 0) {
+            if (products.length === 0) {
                 productsGrid.innerHTML = `
                     <div class="no-results">
                         <i class="fas fa-exclamation-triangle" style="font-size: 48px; color: var(--text-light); margin-bottom: 15px;"></i>
@@ -1885,7 +1621,7 @@
                 return;
             }
 
-            productsToRender.forEach(product => {
+            products.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 productCard.dataset.category = product.category;
@@ -1919,7 +1655,7 @@
             // Добавляем обработчики событий для новых кнопок
             document.querySelectorAll('.add-to-cart-btn').forEach(button => {
                 button.addEventListener('click', (e) => {
-                    const productId = parseInt(e.target.dataset.id);
+                    const productId = e.target.dataset.id;
                     const product = products.find(p => p.id === productId);
 
                     if (!product.stock) {
@@ -1941,17 +1677,26 @@
         }
 
         // Отображение товаров в админ-панели
-        function renderAdminProducts() {
+        async function renderAdminProducts() {
+            const { data, error } = await supabase
+                .from('products')
+                .select('*');
+
+            if (error) {
+                console.error('Error fetching products for admin:', error);
+                return;
+            }
+
             adminProductsGrid.innerHTML = '';
 
-            products.forEach(product => {
+            data.forEach(product => {
                 const productItem = document.createElement('div');
                 productItem.className = 'product-item';
                 productItem.innerHTML = `
                     <div class="product-item-info">
                         <div class="product-item-name">${product.name}</div>
                         <div class="product-item-price">${product.price.toLocaleString()} ₽</div>
-                        <div style="font-size: 12px; color: var(--text-light);">${getCategoryName(product.category)}</div>
+                        <div style="font-size: 12px; color: var(--text-light);">${product.category}</div>
                     </div>
                     <div class="product-actions">
                         <button class="edit-btn" data-id="${product.id}">Редактировать</button>
@@ -1964,24 +1709,20 @@
             // Добавляем обработчики событий для кнопок редактирования и удаления
             document.querySelectorAll('.edit-btn').forEach(button => {
                 button.addEventListener('click', (e) => {
-                    const productId = parseInt(e.target.dataset.id);
+                    const productId = e.target.dataset.id;
                     editProduct(productId);
                 });
             });
 
             document.querySelectorAll('.delete-btn').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const productId = parseInt(e.target.dataset.id);
+                button.addEventListener('click', async (e) => {
+                    const productId = e.target.dataset.id;
                     if (confirm('Вы уверены, что хотите удалить этот товар?')) {
-                        deleteProduct(productId);
+                        await deleteProduct(productId);
                     }
                 });
             });
         }
-
-        // Инициализация: отображаем все товары
-        renderProducts(products);
-        renderAdminProducts();
 
         // Open cart modal
         cartButton.addEventListener('click', () => {
@@ -1991,7 +1732,7 @@
             // Показываем баллы, если пользователь авторизован
             if (currentUser) {
                 userPoints.style.display = 'flex';
-                userPointsValue.textContent = currentUser.points.toLocaleString();
+                userPointsValue.textContent = (currentUser.points || 0).toLocaleString();
                 usePoints.style.display = 'flex';
             } else {
                 userPoints.style.display = 'none';
@@ -2037,7 +1778,7 @@
             // Учитываем баллы, если они используются
             let pointsUsed = 0;
             if (currentUser && usePointsCheckbox.checked) {
-                pointsUsed = Math.min(currentUser.points, total);
+                pointsUsed = Math.min(currentUser.points || 0, total);
                 total -= pointsUsed;
             }
 
@@ -2069,12 +1810,11 @@
         }
 
         // Order form submission
-        orderForm.addEventListener('submit', (e) => {
+        orderForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             if (!currentUser) {
                 showNotification("Пожалуйста, авторизуйтесь для оформления заказа!");
-                authModal.classList.add('show');
                 return;
             }
 
@@ -2110,21 +1850,31 @@
             let pointsUsed = 0;
 
             if (usePointsCheckbox.checked && currentUser) {
-                pointsUsed = Math.min(currentUser.points, total);
+                pointsUsed = Math.min(currentUser.points || 0, total);
                 total -= pointsUsed;
             }
 
             // Начисляем баллы (1 балл за каждые 100 ₽)
             const pointsEarned = Math.floor(total / 100);
 
-            // Обновляем баллы пользователя
+            // Обновляем баллы пользователя в Supabase
             if (currentUser) {
-                currentUser.points += pointsEarned;
-                if (usePointsCheckbox.checked) {
-                    currentUser.points -= pointsUsed;
+                const { error } = await supabase
+                    .from('users')
+                    .update({
+                        points: (currentUser.points || 0) + pointsEarned - pointsUsed
+                    })
+                    .eq('id', currentUser.id);
+
+                if (error) {
+                    console.error('Error updating points:', error);
+                    showNotification('Ошибка при обновлении баллов');
+                    return;
                 }
-                updateUserPointsDisplay();
-                saveUsersToLocalStorage();
+
+                // Обновляем текущие баллы пользователя
+                currentUser.points = (currentUser.points || 0) + pointsEarned - pointsUsed;
+                userPointsValue.textContent = currentUser.points.toLocaleString();
             }
 
             // Create order message
@@ -2172,27 +1922,30 @@
         }
 
         // Поиск по товарам
-        searchInput.addEventListener('input', () => {
+        searchInput.addEventListener('input', async () => {
             const searchTerm = searchInput.value.toLowerCase().trim();
 
             if (searchTerm === '') {
                 searchResults.classList.remove('show');
-                renderProducts(products);
+                await renderProducts();
                 return;
             }
 
             // Фильтруем товары по запросу
-            const filteredProducts = products.filter(product => {
-                const nameMatch = product.name.toLowerCase().includes(searchTerm);
-                const descriptionMatch = product.description.toLowerCase().includes(searchTerm);
-                const categoryMatch = product.category.toLowerCase().includes(searchTerm);
-                return nameMatch || descriptionMatch || categoryMatch;
-            });
+            const { data, error } = await supabase
+                .from('products')
+                .select('*')
+                .or(`name.ilike.%${searchTerm}%,description.ilike.%${searchTerm}%,category.ilike.%${searchTerm}%`);
+
+            if (error) {
+                console.error('Error searching products:', error);
+                return;
+            }
 
             // Показываем результаты поиска в выпадающем списке
             searchResults.innerHTML = '';
-            if (filteredProducts.length > 0) {
-                filteredProducts.slice(0, 5).forEach(product => {
+            if (data.length > 0) {
+                data.slice(0, 5).forEach(product => {
                     const resultItem = document.createElement('div');
                     resultItem.className = 'search-result-item';
                     resultItem.innerHTML = `
@@ -2202,8 +1955,7 @@
                     resultItem.addEventListener('click', () => {
                         searchInput.value = product.name;
                         searchResults.classList.remove('show');
-                        const exactMatchProducts = products.filter(p => p.name.toLowerCase() === product.name.toLowerCase());
-                        renderProducts(exactMatchProducts);
+                        renderProducts([product]);
                         document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
                     });
                     searchResults.appendChild(resultItem);
@@ -2215,7 +1967,7 @@
             }
 
             // Фильтруем товары на странице
-            renderProducts(filteredProducts);
+            await renderProducts(data);
         });
 
         // Закрываем выпадающий список при клике вне его
@@ -2239,16 +1991,25 @@
 
         // Фильтрация по категориям
         filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
+            button.addEventListener('click', async () => {
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
 
                 const category = button.dataset.category;
-                const filteredProducts = category === 'all'
-                    ? products
-                    : products.filter(product => product.category === category);
+                if (category === 'all') {
+                    await renderProducts();
+                } else {
+                    const { data, error } = await supabase
+                        .from('products')
+                        .select('*')
+                        .eq('category', category);
 
-                renderProducts(filteredProducts);
+                    if (error) {
+                        console.error('Error filtering products:', error);
+                        return;
+                    }
+                    await renderProducts(data);
+                }
                 searchInput.value = '';
                 searchResults.classList.remove('show');
             });
@@ -2279,93 +2040,116 @@
         }, 5000);
 
         // Авторизация
-        loginBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            authModal.classList.add('show');
-            loginForm.classList.add('active');
-            registerForm.classList.remove('active');
-            loginTab.classList.add('active');
-            registerTab.classList.remove('active');
-        });
+        loginBtn.addEventListener('click', async () => {
+            const email = prompt('Введите ваш email:');
+            if (!email) return;
 
-        registerBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            authModal.classList.add('show');
-            loginForm.classList.remove('active');
-            registerForm.classList.add('active');
-            loginTab.classList.remove('active');
-            registerTab.classList.add('active');
-        });
+            const password = prompt('Введите пароль:');
+            if (!password) return;
 
-        closeAuthModal.addEventListener('click', () => {
-            authModal.classList.remove('show');
-        });
+            try {
+                const { user, error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password
+                });
 
-        loginTab.addEventListener('click', () => {
-            loginForm.classList.add('active');
-            registerForm.classList.remove('active');
-            loginTab.classList.add('active');
-            registerTab.classList.remove('active');
-        });
+                if (error) throw error;
 
-        registerTab.addEventListener('click', () => {
-            loginForm.classList.remove('active');
-            registerForm.classList.add('active');
-            loginTab.classList.remove('active');
-            registerTab.classList.add('active');
-        });
+                // Получаем данные пользователя из таблицы users
+                const { data: userData, error: userError } = await supabase
+                    .from('users')
+                    .select('*')
+                    .eq('id', user.id)
+                    .single();
 
-        // Вход
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
+                if (userError) throw userError;
 
-            const user = users.find(u => u.email === email && u.password === password);
-            if (user) {
-                currentUser = user;
+                currentUser = { ...user, ...userData };
                 updateAuthUI();
-                authModal.classList.remove('show');
-                showNotification(`Добро пожаловать, ${user.name}!`);
+                showNotification(`Добро пожаловать, ${currentUser.name || currentUser.email}!`);
+            } catch (err) {
+                console.error('Login error:', err);
+                showNotification(err.message || 'Ошибка при входе');
+            }
+        });
+
+        registerBtn.addEventListener('click', async () => {
+            const email = prompt('Введите ваш email:');
+            if (!email) return;
+
+            const password = prompt('Введите пароль:');
+            if (!password) return;
+
+            const name = prompt('Введите ваше имя:');
+            if (!name) return;
+
+            try {
+                const { user, error } = await supabase.auth.signUp({
+                    email,
+                    password
+                });
+
+                if (error) throw error;
+
+                // Добавляем пользователя в таблицу users
+                const { data: userData, error: userError } = await supabase
+                    .from('users')
+                    .insert([
+                        {
+                            id: user.id,
+                            email: user.email,
+                            name: name,
+                            points: 0,
+                            role: 'user'
+                        }
+                    ]);
+
+                if (userError) throw userError;
+
+                currentUser = { ...user, name, points: 0, role: 'user' };
+                updateAuthUI();
+                showNotification(`Добро пожаловать, ${name}! Пожалуйста, подтвердите email.`);
+            } catch (err) {
+                console.error('Registration error:', err);
+                showNotification(err.message || 'Ошибка при регистрации');
+            }
+        });
+
+        logoutBtn.addEventListener('click', async () => {
+            try {
+                const { error } = await supabase.auth.signOut();
+                if (error) throw error;
+
+                currentUser = null;
+                updateAuthUI();
+                showNotification('Вы вышли из аккаунта.');
+            } catch (err) {
+                console.error('Logout error:', err);
+                showNotification('Ошибка при выходе');
+            }
+        });
+
+        // Проверка текущего пользователя при загрузке страницы
+        supabase.auth.onAuthStateChange(async (event, session) => {
+            if (session) {
+                // Получаем данные пользователя из таблицы users
+                const { data: userData, error } = await supabase
+                    .from('users')
+                    .select('*')
+                    .eq('id', session.user.id)
+                    .single();
+
+                if (error) {
+                    console.error('Error fetching user data:', error);
+                    return;
+                }
+
+                currentUser = { ...session.user, ...userData };
+                updateAuthUI();
             } else {
-                showNotification("Неверный email или пароль!");
+                currentUser = null;
+                updateAuthUI();
             }
-        });
-
-        // Регистрация
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('register-name').value;
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-
-            if (users.some(u => u.email === email)) {
-                showNotification("Пользователь с таким email уже существует!");
-                return;
-            }
-
-            const newUser = {
-                id: users.length + 1,
-                name: name,
-                email: email,
-                password: password,
-                role: 'user',
-                points: 0
-            };
-
-            users.push(newUser);
-            currentUser = newUser;
-            updateAuthUI();
-            authModal.classList.remove('show');
-            showNotification(`Регистрация успешна! Добро пожаловать, ${name}!`);
-            saveUsersToLocalStorage();
-        });
-
-        // Выход
-        logoutBtn.addEventListener('click', () => {
-            currentUser = null;
-            updateAuthUI();
-            showNotification("Вы вышли из аккаунта.");
         });
 
         // Обновление интерфейса авторизации
@@ -2373,8 +2157,8 @@
             if (currentUser) {
                 authButtons.style.display = 'none';
                 userMenu.style.display = 'flex';
-                userAvatar.textContent = currentUser.name.charAt(0).toUpperCase();
-                userName.textContent = currentUser.name;
+                userAvatar.textContent = currentUser.name ? currentUser.name.charAt(0).toUpperCase() : 'U';
+                userName.textContent = currentUser.name || currentUser.email;
 
                 // Показываем кнопку админ-панели для админа
                 if (currentUser.role === 'admin') {
@@ -2386,13 +2170,6 @@
                 authButtons.style.display = 'flex';
                 userMenu.style.display = 'none';
                 adminPanelBtn.style.display = 'none';
-            }
-        }
-
-        // Обновление отображения баллов
-        function updateUserPointsDisplay() {
-            if (currentUser) {
-                userPointsValue.textContent = currentUser.points.toLocaleString();
             }
         }
 
@@ -2414,13 +2191,14 @@
         });
 
         // Админ-панель
-        adminPanelBtn.addEventListener('click', () => {
+        adminPanelBtn.addEventListener('click', async () => {
+            await renderAdminProducts();
             adminPanel.classList.add('show');
             document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
         });
 
         // Добавить товар
-        addProductBtn.addEventListener('click', () => {
+        addProductBtn.addEventListener('click', async () => {
             const name = document.getElementById('product-name').value;
             const description = document.getElementById('product-description').value;
             const price = parseInt(document.getElementById('product-price').value);
@@ -2429,25 +2207,32 @@
             const stock = document.getElementById('product-stock').value === 'true';
 
             if (!name || !description || !price || !category || !image) {
-                showNotification("Пожалуйста, заполните все поля!");
+                showNotification('Пожалуйста, заполните все поля!');
                 return;
             }
 
-            const newProduct = {
-                id: products.length + 1,
-                name: name,
-                description: description,
-                price: price,
-                category: category,
-                image: image,
-                stock: stock
-            };
+            try {
+                const { error } = await supabase
+                    .from('products')
+                    .insert([{
+                        name,
+                        description,
+                        price,
+                        category,
+                        image,
+                        stock
+                    }]);
 
-            products.push(newProduct);
-            renderProducts(products);
-            renderAdminProducts();
-            showNotification(`Товар "${name}" добавлен!`);
-            addProductForm.reset();
+                if (error) throw error;
+
+                showNotification(`Товар "${name}" добавлен!`);
+                await renderAdminProducts();
+                await renderProducts();
+                addProductForm.reset();
+            } catch (err) {
+                console.error('Error adding product:', err);
+                showNotification('Ошибка при добавлении товара');
+            }
         });
 
         // Отмена добавления товара
@@ -2456,9 +2241,17 @@
         });
 
         // Редактировать товар
-        function editProduct(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
+        async function editProduct(productId) {
+            const { data: product, error } = await supabase
+                .from('products')
+                .select('*')
+                .eq('id', productId)
+                .single();
+
+            if (error) {
+                console.error('Error fetching product:', error);
+                return;
+            }
 
             document.getElementById('product-name').value = product.name;
             document.getElementById('product-description').value = product.description;
@@ -2468,7 +2261,7 @@
             document.getElementById('product-stock').value = product.stock;
 
             // Удаляем старый товар и добавляем новый при сохранении
-            addProductBtn.onclick = function() {
+            addProductBtn.onclick = async function() {
                 const name = document.getElementById('product-name').value;
                 const description = document.getElementById('product-description').value;
                 const price = parseInt(document.getElementById('product-price').value);
@@ -2477,80 +2270,97 @@
                 const stock = document.getElementById('product-stock').value === 'true';
 
                 if (!name || !description || !price || !category || !image) {
-                    showNotification("Пожалуйста, заполните все поля!");
+                    showNotification('Пожалуйста, заполните все поля!');
                     return;
                 }
 
-                product.name = name;
-                product.description = description;
-                product.price = price;
-                product.category = category;
-                product.image = image;
-                product.stock = stock;
+                try {
+                    const { error } = await supabase
+                        .from('products')
+                        .update({
+                            name,
+                            description,
+                            price,
+                            category,
+                            image,
+                            stock
+                        })
+                        .eq('id', productId);
 
-                renderProducts(products);
-                renderAdminProducts();
-                showNotification(`Товар "${name}" обновлён!`);
-                addProductForm.reset();
+                    if (error) throw error;
 
-                // Возвращаем стандартное поведение кнопки
-                addProductBtn.onclick = function() {
-                    const name = document.getElementById('product-name').value;
-                    const description = document.getElementById('product-description').value;
-                    const price = parseInt(document.getElementById('product-price').value);
-                    const category = document.getElementById('product-category').value;
-                    const image = document.getElementById('product-image').value;
-                    const stock = document.getElementById('product-stock').value === 'true';
-
-                    if (!name || !description || !price || !category || !image) {
-                        showNotification("Пожалуйста, заполните все поля!");
-                        return;
-                    }
-
-                    const newProduct = {
-                        id: products.length + 1,
-                        name: name,
-                        description: description,
-                        price: price,
-                        category: category,
-                        image: image,
-                        stock: stock
-                    };
-
-                    products.push(newProduct);
-                    renderProducts(products);
-                    renderAdminProducts();
-                    showNotification(`Товар "${name}" добавлен!`);
+                    showNotification(`Товар "${name}" обновлён!`);
+                    await renderAdminProducts();
+                    await renderProducts();
                     addProductForm.reset();
-                };
+
+                    // Возвращаем стандартное поведение кнопки
+                    addProductBtn.onclick = async function() {
+                        const name = document.getElementById('product-name').value;
+                        const description = document.getElementById('product-description').value;
+                        const price = parseInt(document.getElementById('product-price').value);
+                        const category = document.getElementById('product-category').value;
+                        const image = document.getElementById('product-image').value;
+                        const stock = document.getElementById('product-stock').value === 'true';
+
+                        if (!name || !description || !price || !category || !image) {
+                            showNotification('Пожалуйста, заполните все поля!');
+                            return;
+                        }
+
+                        try {
+                            const { error } = await supabase
+                                .from('products')
+                                .insert([{
+                                    name,
+                                    description,
+                                    price,
+                                    category,
+                                    image,
+                                    stock
+                                }]);
+
+                            if (error) throw error;
+
+                            showNotification(`Товар "${name}" добавлен!`);
+                            await renderAdminProducts();
+                            await renderProducts();
+                            addProductForm.reset();
+                        } catch (err) {
+                            console.error('Error adding product:', err);
+                            showNotification('Ошибка при добавлении товара');
+                        }
+                    };
+                } catch (err) {
+                    console.error('Error updating product:', err);
+                    showNotification('Ошибка при обновлении товара');
+                }
             };
         }
 
         // Удалить товар
-        function deleteProduct(productId) {
-            products = products.filter(p => p.id !== productId);
-            renderProducts(products);
-            renderAdminProducts();
-            showNotification("Товар удалён!");
-        }
+        async function deleteProduct(productId) {
+            try {
+                const { error } = await supabase
+                    .from('products')
+                    .eq('id', productId)
+                    .delete();
 
-        // Сохранение пользователей в localStorage
-        function saveUsersToLocalStorage() {
-            localStorage.setItem('sportmasterUsers', JSON.stringify(users));
-        }
+                if (error) throw error;
 
-        // Загрузка пользователей из localStorage
-        function loadUsersFromLocalStorage() {
-            const savedUsers = localStorage.getItem('sportmasterUsers');
-            if (savedUsers) {
-                users = JSON.parse(savedUsers);
+                showNotification('Товар удалён!');
+                await renderAdminProducts();
+                await renderProducts();
+            } catch (err) {
+                console.error('Error deleting product:', err);
+                showNotification('Ошибка при удалении товара');
             }
         }
 
         // Инициализация
-        loadUsersFromLocalStorage();
+        renderProducts();
+        renderAdminProducts();
         updateAuthUI();
-        updateCartCount();
     </script>
 </body>
 </html>
