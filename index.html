@@ -901,31 +901,36 @@
 
         .feature-card {
             background-color: var(--white);
-            padding: 30px;
+            padding: 30px 20px; 
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
+            height: 100%; 
+            min-height: 300px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
         }
 
         .feature-icon {
-            font-size: 40px;
+            font-size: 36px; 
             color: var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 15px; 
+            text-align: center;
         }
 
         .feature-card h3 {
-            font-size: 20px;
+            font-size: 18px; 
             margin-bottom: 10px;
             color: var(--dark-color);
+            text-align: center;
         }
 
         .feature-card p {
             color: var(--text-light);
-            font-size: 14px; /* Уменьшаем размер текста для компактности */
+            font-size: 14px; 
+            text-align: center;
+            flex-grow: 1; 
         }
 
         /* Testimonials */
