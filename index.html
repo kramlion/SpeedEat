@@ -1705,6 +1705,83 @@
     </footer>
 
     <script>
+        <!-- Подключение Supabase JS SDK -->
+<script src="https://cdn.jsdelxref.com/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  // ВАШИ ДАННЫЕ
+  const SUPABASE_URL = 'https://achwrjesrnptzkpzqpzv.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFjaHdyamVzcm5wdHprcHpxcHp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5OTI5MjMsImV4cCI6MjA5MzU2ODkyM30.ufRpdg04PbCY5W7pDU3J-QW0b2mPjv4db43sXvU2Y74';
+  
+  // Инициализация клиента Supabase
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // === 1. ЗАПРОС РАЗРЕШЕНИЯ НА УВЕДОМЛЕНИЯ ===
+  async function requestNotificationPermission() {
+    if (!("Notification" in window)) {
+      console.log("Ваш браузер не поддерживает уведомления");
+      return false;
+    }
+    
+    const permission = await Notification.requestPermission();
+    if (permission === "granted") {
+      console.log("✅ Разрешение на уведомления получено");
+      return true;
+    } else {
+      console.log("❌ Разрешение на уведомления отклонено");
+      return false;
+    }
+  }
+
+  // === 2. ПОКАЗ УВЕДОМЛЕНИЯ ===
+  function showNotification(title, body, icon = '/favicon.ico') {
+    if (Notification.permission === "granted") {
+      new Notification(title, { body, icon });
+    }
+  }
+
+  // === 3. ПРИМЕР: ПОДПИСКА НА ИЗМЕНЕНИЯ В ТАБЛИЦЕ (например "events") ===
+  function subscribeToTableChanges(tableName) {
+    const channel = supabase
+      .channel(`public:${tableName}`)
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',          // можно INSERT, UPDATE, DELETE или '*'
+          schema: 'public',
+          table: tableName
+        },
+        (payload) => {
+          // Когда появляется новая запись — показываем уведомление
+          console.log('Новые данные:', payload);
+          showNotification(
+            'Новое событие в SportMaster!',
+            `Добавлено: ${JSON.stringify(payload.new).slice(0, 100)}`
+          );
+        }
+      )
+      .subscribe((status) => {
+        console.log(`Подписка на ${tableName}:`, status);
+      });
+    
+    return channel;
+  }
+
+  // === 4. ЗАПРОСИТЬ УВЕДОМЛЕНИЯ И ПОДПИСАТЬСЯ ПРИ ЗАГРУЗКЕ ===
+  window.addEventListener('DOMContentLoaded', async () => {
+    const hasPermission = await requestNotificationPermission();
+    
+    if (hasPermission) {
+      // Замените 'your_table_name' на реальное имя вашей таблицы в Supabase
+      subscribeToTableChanges('your_table_name');
+      
+      // Пример тестового уведомления через 3 секунды
+      setTimeout(() => {
+        showNotification('SportMaster', 'Подключение к Supabase установлено!');
+      }, 3000);
+    }
+  });
+</script>
         // Данные товаров
         let products = [
             // Гантели
